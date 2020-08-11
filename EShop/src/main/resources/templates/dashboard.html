@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<link rel="stylesheet" type="text/css"
+	th:href="@{/webjars/bootstrap/4.5.0/css/bootstrap.min.css}" />
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}">
+<title>Home</title>
+</head>
+<body style="padding-top: 70px;">
+
+	<div th:insert="/navbar :: navbar"></div>
+	<div class="container py-3">
+
+		<div class="row text-center text-white mb-3">
+			<div class="col-lg-7 mx-auto">
+				<h1 class="display-4"><b>Eshop Items</b></h1>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-lg-10 mx-auto">
+
+				<!-- List group-->
+				<ul class="list-group shadow">
+
+					<!-- list group item-->
+					<li class="list-group-item" th:if="${not #lists.isEmpty(listProducts)}" th:each="product : ${listProducts}">
+						<!-- Custom content-->
+						<div
+							class="media align-items-lg-center flex-column flex-lg-row p-3">
+							<div class="media-body order-2 order-lg-1">
+								<h5 class="mt-0 font-weight-bold mb-2"
+									th:text="${product.productName}"></h5>
+								<p class="font-italic text-muted mb-0 small"
+									th:text="${product.productDesc}"></p>
+								<div
+									class="d-flex align-items-center justify-content-between mt-1">
+									<h5 class="font-weight-bold my-2"
+										th:text="${'&#8377;' + product.sellPrice}"></h5>
+									<del>
+										<h6 class="font-weight-bold"
+											th:text="${'&#8377;' + product.listPrice}"></h6>
+									</del>
+									<ul class="list-inline small">
+										<li class="list-inline-item m-0"><i
+											class="fa fa-star text-success"></i></li>
+										<li class="list-inline-item m-0"><i
+											class="fa fa-star text-success"></i></li>
+										<li class="list-inline-item m-0"><i
+											class="fa fa-star text-success"></i></li>
+										<li class="list-inline-item m-0"><i
+											class="fa fa-star text-success"></i></li>
+										<li class="list-inline-item m-0"><i
+											class="fa fa-star-o text-gray"></i></li>
+									</ul>
+								</div>
+							</div>
+							<img alt="eCommerce Product List"
+								th:src="${product.productImagePath}" width="200" height="150"
+								class="ml-lg-5 order-1 order-lg-2">
+
+						</div>
+						<button type="button" class="btn btn-primary ">
+							<i class="fa fa-shopping-cart"></i> Add
+						</button> <!-- End -->
+					</li>
+					<!-- End -->
+					
+				</ul>
+				<!-- End -->
+				<div class="text-center list-group-item align-items-lg-center" th:if="${#lists.isEmpty(listProducts)}">No product available please login and create it...</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- <p>
+			Welcome <span sec:authentication="principal.username">User</span>
+		</p> -->
+
+	<script type="text/javascript"
+		th:src="@{/webjars/jquery/3.2.1/jquery.min.js/}"></script>
+	<script type="text/javascript"
+		th:src="@{/webjars/bootstrap/4.5.0/js/bootstrap.min.js}"></script>
+
+</body>
+</html>

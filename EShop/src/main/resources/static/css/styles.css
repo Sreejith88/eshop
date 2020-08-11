@@ -1,0 +1,18 @@
+@charset "UTF-8";
+
+/*  body {
+  background: #c0c0c0;
+  background: -webkit-linear-gradient(to right, #00b09b, #96c93d);
+  background: linear-gradient(to right, #00b09b, #96c93d);
+  min-height: 100vh;
+} */
+
+body {
+/* background-image: url("/images/bg-image.jpg"); */
+background-color: #f1f2f6;
+background-image: linear-gradient(315deg, #f1f2f6 0%, #c9c6c6 74%);
+}
+
+#navbar-ul a:hover {
+    color: #8000ff!important; 
+}

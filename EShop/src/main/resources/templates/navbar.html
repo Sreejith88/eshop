@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Home</title>
+</head>
+<body>
+	<nav th:fragment="navbar" class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark justify-content-between">
+		<div class="container">
+			<ul class="navbar-nav ml-auto">
+				<li class="dropdown nav-item active"><a class="dropdown-toggle navbar-brand"
+					data-toggle="dropdown" href="#"><span class="caret"></span></a>
+					<ul id="navbar-ul" class="dropdown-menu">
+					    <li class="nav-item text-center"><a
+							class="navbar-brand" style="color: black" href="#" th:href="@{/}">Home</a>
+						</li>
+						<li class="nav-item text-center"><a
+							class="navbar-brand" style="color: black"
+							sec:authorize="hasAnyRole('ROLE_ADMIN','ROLE_SUPER_ADMIN')"
+							th:href="@{/registration/getAllUser}">Users</a>
+						<li class="nav-item text-center"><a
+							class="navbar-brand" style="color: black"
+							sec:authorize="hasAnyRole('ROLE_ADMIN','ROLE_SUPER_ADMIN')"
+							th:href="@{/getAllProducts}">Product</a>
+						</li>
+						<li class="nav-item text-center"><a
+							class="navbar-brand" style="color: black"
+							sec:authorize="hasAnyRole('ROLE_ADMIN','ROLE_SUPER_ADMIN')"
+							th:href="@{/registration}">Register</a>
+						</li>
+						<li class="nav-item text-center"><a
+							class="navbar-brand" style="color: black"
+							sec:authorize="!isAuthenticated()" th:href="@{/login}">Login</a>
+						</li>
+						<li class="nav-item text-center"><a
+							class="navbar-brand" style="color: black"
+							sec:authorize="isAuthenticated()" th:href="@{/logout}">Logout</a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</nav>
+</body>
+</html>
